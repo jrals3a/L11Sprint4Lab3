@@ -1,0 +1,35 @@
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5050
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [18/Nov/2026 23:02:38] "GET /api/health HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:40] "POST /api/tasks/reset HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:40] "GET /tasks/new HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:40] "GET /static/styles/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "[32mPOST /tasks/new HTTP/1.1[0m" 302 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /tasks HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "[36mGET /static/styles/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "POST /api/tasks/reset HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /tasks/new HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /static/styles/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "POST /tasks/new HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "[36mGET /static/styles/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "POST /api/tasks/reset HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /tasks/new HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /static/styles/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "[32mPOST /tasks/new HTTP/1.1[0m" 302 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /tasks HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "[36mGET /static/styles/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "[32mPOST /tasks/1/complete HTTP/1.1[0m" 302 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /tasks HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "[36mGET /static/styles/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "POST /api/tasks/reset HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /tasks/new HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /static/styles/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "[32mPOST /tasks/new HTTP/1.1[0m" 302 -
+127.0.0.1 - - [18/Nov/2026 23:02:41] "GET /tasks HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:42] "[36mGET /static/styles/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [18/Nov/2026 23:02:42] "[32mPOST /tasks/1/delete HTTP/1.1[0m" 302 -
+127.0.0.1 - - [18/Nov/2026 23:02:42] "GET /tasks HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 23:02:42] "[36mGET /static/styles/style.css HTTP/1.1[0m" 304 -

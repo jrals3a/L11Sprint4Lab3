@@ -1,0 +1,34 @@
+<!-- app/templates/add_task.html -->
+{% extends "base.html" %}
+
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
+<section>
+  <header>
+    <h1>Create a Task</h1>
+  </header>
+
+  {% if error %}
+    <p class="alert alert-error" role="alert">{{ error }}</p>
+  {% endif %}
+
+  <form action="{{ url_for('ui.task_submit') }}" method="post" role="form">
+    <fieldset>
+      <legend class="sr-only">Task Details</legend>
+
+      <div class="form-group">
+        <label for="task-title">Title:</label>
+        <input type="text" id="task-title" name="title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="task-description">Description:</label>
+        <input type="text" id="task-description" name="description">
+      </div>
+
+      <button type="submit" class="btn-primary">Add Task</button>
+    </fieldset>
+  </form>
+</section>
+{% endblock %}

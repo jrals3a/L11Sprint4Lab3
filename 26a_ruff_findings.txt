@@ -1,0 +1,337 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> app/__init__.py:2:1
+   |
+ 1 |   # app/__init__.py
+ 2 | / from typing import Any
+ 3 | |
+ 4 | | from flask import Flask, Response, jsonify
+ 5 | |
+ 6 | | from app.repositories.file_task_repository import FileTaskRepository
+ 7 | | from app.routes.health import health_bp
+ 8 | | from app.routes.tasks import tasks_bp
+ 9 | | from app.routes.ui import ui_bp          # ← add this line
+10 | | from app.services.task_service import TaskService
+   | |_________________________________________________^
+   |
+help: Organize imports
+
+E501 Line too long (93 > 88)
+  --> app/__init__.py:24:89
+   |
+22 |     Args:
+23 |         service: Optional pre-built service to inject (used in tests).
+24 |         use_db:  If True, use DatabaseTaskRepository. If False (default), FileTaskRepository.
+   |                                                                                         ^^^^^
+25 |         config:  Optional settings applied before the repository is built (used in tests).
+   |
+
+E501 Line too long (90 > 88)
+  --> app/__init__.py:25:89
+   |
+23 |         service: Optional pre-built service to inject (used in tests).
+24 |         use_db:  If True, use DatabaseTaskRepository. If False (default), FileTaskRepository.
+25 |         config:  Optional settings applied before the repository is built (used in tests).
+   |                                                                                         ^^
+26 |
+27 |     US015 — Global error handlers returning JSON.
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> app/models/sqlalchemy_task.py:2:1
+  |
+1 |   # app/models/sqlalchemy_task.py
+2 | / from typing import Any
+3 | |
+4 | | from sqlalchemy import Boolean, Integer, String
+5 | | from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+  | |_________________________________________________________________^
+6 |
+7 |   class Base(DeclarativeBase):
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> app/repositories/base.py:2:1
+  |
+1 |   # app/repositories/base.py
+2 | / from abc import ABC, abstractmethod
+3 | | from typing import Any
+  | |______________________^
+4 |
+5 |   class ITaskRepository(ABC):
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> app/repositories/database_task_repository.py:2:1
+   |
+ 1 |   # app/repositories/database_task_repository.py
+ 2 | / from typing import Any
+ 3 | |
+ 4 | | from sqlalchemy import create_engine
+ 5 | | from sqlalchemy.orm import Session
+ 6 | |
+ 7 | | from app.models.sqlalchemy_task import Base, SQLAlchemyTask
+ 8 | | from app.repositories.base import ITaskRepository
+   | |_________________________________________________^
+ 9 |
+10 |   class DatabaseTaskRepository(ITaskRepository):
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> app/repositories/file_task_repository.py:2:1
+  |
+1 |   # app/repositories/file_task_repository.py
+2 | / from typing import Any
+3 | |
+4 | | from app.models.task import Task
+5 | | from app.repositories.base import ITaskRepository
+6 | | from app.services.task_storage import load_tasks, save_tasks
+  | |____________________________________________________________^
+7 |
+8 |   class FileTaskRepository(ITaskRepository):
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> app/routes/health.py:3:1
+  |
+1 | # app/routes/health.py
+2 |
+3 | from flask import Blueprint, Response, jsonify
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> app/routes/tasks.py:2:1
+  |
+1 | # app/routes/tasks.py
+2 | from flask import Blueprint, Response, current_app, jsonify, request
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> app/services/task_service.py:2:1
+  |
+1 |   # app/services/task_service.py
+2 | / from typing import Any
+3 | |
+4 | | from app.repositories.base import ITaskRepository
+  | |_________________________________________________^
+5 |
+6 |   class TaskService:
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> app/services/task_storage.py:2:1
+  |
+1 |   # app/services/task_storage.py
+2 | / import os
+3 | | import json
+4 | | from typing import Any
+  | |______________________^
+5 |
+6 |   TASKS_FILE = os.path.join("app", "data", "tasks.json")
+  |
+help: Organize imports
+
+W293 [*] Blank line contains whitespace
+  --> app/services/task_storage.py:24:1
+   |
+22 |     except IOError as e:
+23 |         print(f"[Warning] Error saving tasks: {e}")
+24 |         
+   | ^^^^^^^^
+25 | # ── Dependency Injection Infrastructure ────────────────────────────────────
+26 | # TaskStorage wraps the existing load_tasks/save_tasks functions to enable
+   |
+help: Remove whitespace from blank line
+
+E501 Line too long (89 > 88)
+  --> tests/error/test_error_handling.py:12:89
+   |
+10 |     - Flask detects a parsing error and returns a structured 400 error JSON.
+11 |     """
+12 |     response = client.post("/api/tasks", data="invalid", content_type="application/json")
+   |                                                                                         ^
+13 |     assert response.status_code == 400
+14 |     assert "error" in response.get_json()
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/health/test_health.py:1:1
+  |
+1 | from app import create_app
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2 |
+3 | def test_health_check():
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/storage/test_task_storage.py:2:1
+  |
+1 | # tests/storage/test_task_storage.py
+2 | from app.services.task_storage import save_tasks, load_tasks
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3 |
+4 | def test_save_and_load_tasks():
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_add_task.py:2:1
+  |
+1 | # tests/tasks/test_add_task.py
+2 | from flask.testing import FlaskClient
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3 |
+4 | def test_add_valid_task(client: FlaskClient):
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/tasks/test_routes_with_mock.py:11:1
+   |
+ 9 |   The mocker fixture is function-scoped: each test gets a fresh MagicMock.
+10 |   """
+11 | / import pytest
+12 | |
+13 | | from app import create_app
+   | |__________________________^
+14 |
+15 |   @pytest.fixture
+   |
+help: Organize imports
+
+E501 Line too long (90 > 88)
+  --> tests/tasks/test_task_model.py:15:89
+   |
+14 | def test_task_default_completed_false():
+15 |     """TC-RF004-002: Task.completed defaults to False and mark_complete() sets it True."""
+   |                                                                                         ^^
+16 |     task = Task(id=2, title="Do homework", description="Math exercises")
+17 |     assert task.completed is False
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_task_service_add.py:2:1
+  |
+1 |   # tests/tasks/test_task_service_add.py
+2 | / import pytest
+3 | | from app.services.task_service import TaskService
+4 | | from app.repositories.file_task_repository import FileTaskRepository
+  | |____________________________________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_task_service_add_integration.py:2:1
+  |
+1 |   # tests/tasks/test_task_service_add_integration.py
+2 | / from app.repositories.file_task_repository import FileTaskRepository
+3 | | from app.services.task_service import TaskService
+  | |_________________________________________________^
+4 |
+5 |   def test_add_task_creates_task_object():
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_task_service_complete.py:2:1
+  |
+1 |   # tests/tasks/test_task_service_complete.py
+2 | / from app.services.task_service import TaskService
+3 | | from app.repositories.file_task_repository import FileTaskRepository
+  | |____________________________________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_task_service_complete_integration.py:2:1
+  |
+1 |   # tests/tasks/test_task_service_complete_integration.py
+2 | / from app.repositories.file_task_repository import FileTaskRepository
+3 | | from app.services.task_service import TaskService
+  | |_________________________________________________^
+4 |
+5 |   def test_complete_task_marks_completed():
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_task_service_delete.py:2:1
+  |
+1 |   # tests/tasks/test_task_service_delete.py
+2 | / from app.services.task_service import TaskService
+3 | | from app.repositories.file_task_repository import FileTaskRepository
+  | |____________________________________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_task_service_delete_integration.py:2:1
+  |
+1 |   # tests/tasks/test_task_service_delete_integration.py
+2 | / from app.repositories.file_task_repository import FileTaskRepository
+3 | | from app.services.task_service import TaskService
+  | |_________________________________________________^
+4 |
+5 |   def test_delete_task_removes_correct_task():
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_task_service_get.py:2:1
+  |
+1 |   # tests/tasks/test_task_service_get.py
+2 | / from app.services.task_service import TaskService
+3 | | from app.repositories.file_task_repository import FileTaskRepository
+  | |____________________________________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tasks/test_task_service_get_integration.py:2:1
+  |
+1 |   # tests/tasks/test_task_service_get_integration.py
+2 | / from app.repositories.file_task_repository import FileTaskRepository
+3 | | from app.services.task_service import TaskService
+  | |_________________________________________________^
+4 |
+5 |   def test_get_tasks_when_none_exist():
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/test_app_factory.py:2:1
+  |
+1 |   # tests/test_app_factory.py
+2 | / from flask import Flask
+3 | |
+4 | | from app import create_app
+  | |__________________________^
+5 |
+6 |   def test_create_app_returns_flask_instance():
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/ui/conftest.py:9:1
+   |
+ 7 |   fixtures and the existing tests/conftest.py reset_tasks fixture.
+ 8 |   """
+ 9 | / import pytest
+10 | | from playwright.sync_api import sync_playwright, Page
+   | |_____________________________________________________^
+11 |
+12 |   BASE_URL = "http://127.0.0.1:5000"
+   |
+help: Organize imports
+
+Found 28 errors.
+[*] 24 fixable with the `--fix` option.

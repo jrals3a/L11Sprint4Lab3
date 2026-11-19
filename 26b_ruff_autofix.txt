@@ -1,0 +1,43 @@
+E501 Line too long (93 > 88)
+  --> app/__init__.py:23:89
+   |
+21 |     Args:
+22 |         service: Optional pre-built service to inject (used in tests).
+23 |         use_db:  If True, use DatabaseTaskRepository. If False (default), FileTaskRepository.
+   |                                                                                         ^^^^^
+24 |         config:  Optional settings applied before the repository is built (used in tests).
+   |
+
+E501 Line too long (90 > 88)
+  --> app/__init__.py:24:89
+   |
+22 |         service: Optional pre-built service to inject (used in tests).
+23 |         use_db:  If True, use DatabaseTaskRepository. If False (default), FileTaskRepository.
+24 |         config:  Optional settings applied before the repository is built (used in tests).
+   |                                                                                         ^^
+25 |
+26 |     US015 — Global error handlers returning JSON.
+   |
+
+E501 Line too long (89 > 88)
+  --> tests/error/test_error_handling.py:12:89
+   |
+10 |     - Flask detects a parsing error and returns a structured 400 error JSON.
+11 |     """
+12 |     response = client.post("/api/tasks", data="invalid", content_type="application/json")
+   |                                                                                         ^
+13 |     assert response.status_code == 400
+14 |     assert "error" in response.get_json()
+   |
+
+E501 Line too long (90 > 88)
+  --> tests/tasks/test_task_model.py:15:89
+   |
+14 | def test_task_default_completed_false():
+15 |     """TC-RF004-002: Task.completed defaults to False and mark_complete() sets it True."""
+   |                                                                                         ^^
+16 |     task = Task(id=2, title="Do homework", description="Math exercises")
+17 |     assert task.completed is False
+   |
+
+Found 28 errors (24 fixed, 4 remaining).

@@ -1,0 +1,62 @@
+/* app/static/styles/style.css */
+
+/* Base */
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f5f7fa; color: #333; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; background-color: white; min-height: 100vh; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+/* Headers */
+h1 { color: #2c3e50; margin-bottom: 30px; padding-bottom: 10px; border-bottom: 3px solid #3498db; }
+
+/* Navigation */
+nav { margin-bottom: 30px; padding: 15px 0; border-bottom: 1px solid #e0e0e0; }
+nav a { margin-right: 20px; text-decoration: none; color: #3498db; font-weight: 500; padding: 8px 15px; border-radius: 5px; transition: all 0.3s ease; }
+nav a:hover { background-color: #3498db; color: white; }
+
+/* Forms */
+form { background-color: #f8f9fa; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0; }
+form[style*="inline"] { background: none; padding: 0; margin: 0; border-radius: 0; box-shadow: none; }
+.form-group { margin-bottom: 20px; }
+fieldset { border: none; padding: 0; margin: 0; }
+
+/* Labels and inputs */
+label { display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50; font-size: 14px; }
+input[type="text"] { width: 100%; padding: 12px 15px; margin-bottom: 20px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: inherit; box-sizing: border-box; }
+input[type="text"]:focus { outline: none; border-color: #3498db; box-shadow: 0 0 0 3px rgba(52,152,219,0.1); }
+
+/* Buttons */
+button { background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 6px 12px; border: none; border-radius: 5px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+button:hover { background: linear-gradient(135deg, #2980b9, #21618c); transform: translateY(-1px); }
+.btn-primary { padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; }
+.btn-small { padding: 2px 6px; font-size: 12px; border-radius: 3px; min-width: auto; }
+.btn-complete { background: linear-gradient(135deg, #27ae60, #229954); }
+.btn-delete { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+.btn-complete:hover { background: linear-gradient(135deg, #229954, #1e7e34); }
+.btn-delete:hover { background: linear-gradient(135deg, #c0392b, #a93226); }
+
+/* Tasks */
+.task-list { list-style: none; padding: 0; margin: 0; }
+.task-item { background-color: white; padding: 5px; margin: 1px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #3498db; }
+.task-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.task-content { flex: 1; margin-right: 4px; }
+.task-title { font-size: 16px; font-weight: 600; color: #2c3e50; margin: 0; }
+.task-description { color: #7f8c8d; margin: 0; font-size: 13px; }
+.task-actions { display: flex; gap: 1px; flex-shrink: 0; }
+.task-completed { opacity: 0.7; border-left-color: #27ae60; }
+.task-completed .task-title { text-decoration: line-through; color: #7f8c8d; }
+.empty-state { text-align: center; padding: 40px; color: #7f8c8d; }
+.form-inline { display: inline-block; }
+
+/* Alerts */
+.alert { padding: 15px; margin: 20px 0; border-radius: 8px; font-weight: 500; }
+.alert-error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+/* Accessibility */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container { padding: 10px; }
+  form { padding: 20px; }
+  nav a { display: block; margin: 5px 0; }
+  .task-actions { flex-direction: column; }
+}

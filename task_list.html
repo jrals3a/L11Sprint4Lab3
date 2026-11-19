@@ -1,0 +1,45 @@
+<!-- app/templates/task_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+<section>
+  <header>
+    <h1>All Tasks</h1>
+  </header>
+
+  {% if tasks %}
+    <ul class="task-list" aria-label="Task list">
+      {% for task in tasks %}
+        <li class="task-item {% if task.completed %}task-completed{% endif %}">
+          <article>
+            <header class="task-header">
+              <div class="task-content">
+                <h2 class="task-title">{{ task.title }}</h2>
+                {% if task.description %}
+                  <p class="task-description">{{ task.description }}</p>
+                {% endif %}
+              </div>
+              <div class="task-actions" role="group" aria-label="Task actions for {{ task.title }}">
+                {% if not task.completed %}
+                  <form action="/tasks/{{ task.id }}/complete" method="post" class="form-inline">
+                    <button type="submit" class="btn-small btn-complete">Complete</button>
+                  </form>
+                {% endif %}
+                <form action="/tasks/{{ task.id }}/delete" method="post" class="form-inline">
+                  <button type="submit" class="btn-small btn-delete">Delete</button>
+                </form>
+              </div>
+            </header>
+          </article>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty-state" role="status" aria-live="polite">
+      No tasks yet! <a href="{{ url_for('ui.task_submit') }}">Create your first task</a>
+    </p>
+  {% endif %}
+</section>
+{% endblock %}
